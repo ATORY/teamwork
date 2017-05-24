@@ -1,0 +1,89 @@
+const api = {
+  fetchUser: id => {
+    const request = fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(response => response.json());
+    return Observable.from(request);
+  }
+};
+
+const fetchUserEpic = action$ =>
+  action$.ofType(FETCH_USER)
+    .mergeMap(action =>
+      api.fetchUser(action.payload) // This returns our Observable wrapping the Promise
+        .map(payload => ({ type: FETCH_USER_FULFILLED, payload }))
+    );
+
+export const fetchMeEpic = (action$) =>
+  action$.ofType(actionTypes.SESSION_SET)
+    .mergeMap((action) =>
+      Observable.from(fetchMe(action.session))
+        ...
+    );
+
+export const fetchStreamEpic = (action$) =>
+  action$.ofType(actionTypes.SESSION_SET)
+    .mergeMap((action) =>
+      Observable.from(fetchStream(action.session))
+        ...
+    );
+
+const fetchMe = (session) =>
+  fetch(`//api.soundcloud.com/me?oauth_token=${session.oauth_token}`)
+    .then((response) => response.json());
+
+const fetchStream = (session) =>
+  fetch(`//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`)
+    .then((response) => response.json());
+
+// Create a factory function which returns a promise
+var promiseFn = function () { return Promise.resolve(42); };
+
+var source = Rx.Observable.fromPromise(promiseFn);
+
+var subscription = source.subscribe(
+  function (x) {
+    console.log('Next: %s', x);
+  },
+  function (err) {
+    console.log('Error: %s', err);
+  },
+  function () {
+    console.log('Completed');
+  });
+
+// Create a promise which resolves 42
+var promise1 = Promise.resolve(42)
+
+var source1 = Rx.Observable.fromPromise(promise1);
+
+var subscription1 = source1.subscribe(
+  function (x) {
+    console.log('Next: %s', x);
+  },
+  function (err) {
+    console.log('Error: %s', err);
+  },
+  function () {
+    console.log('Completed');
+  });
+
+// => Next: 42
+// => Completed
+
+// Create a promise which rejects with an error
+var promise2 = Promise.reject(new Error('reason'));
+
+var source2 = Rx.Observable.fromPromise(promise2);
+
+var subscription2 = source2.subscribe(
+  function (x) {
+    console.log('Next: %s', x);
+  },
+  function (err) {
+    console.log('Error: %s', err);
+  },
+  function () {
+    console.log('Completed');
+  });
+
+// => Error: Error: reject
