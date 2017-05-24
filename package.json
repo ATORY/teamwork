@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "build:dev": "webpack --progress --color -w"
+    "build:dev": "webpack --progress --color -w",
+    "start": "ts-node server/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,10 +19,20 @@
     "webpack": "^2.5.1"
   },
   "dependencies": {
+    "@types/koa": "^2.0.39",
+    "@types/koa-bodyparser": "^3.0.23",
+    "@types/koa-router": "^7.0.22",
+    "@types/mongodb": "^2.2.2",
     "@types/react": "^15.0.24",
     "@types/react-dom": "^15.5.0",
     "@types/react-redux": "^4.4.40",
     "@types/redux-logger": "^3.0.0",
+    "@types/socket.io": "^1.4.29",
+    "@types/socket.io-client": "^1.4.29",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.0",
+    "mongodb": "^2.2.27",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -29,6 +40,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.14.1",
-    "rxjs": "^5.4.0"
+    "rxjs": "^5.4.0",
+    "socket.io": "^2.0.1",
+    "socket.io-client": "^2.0.1"
   }
 }
