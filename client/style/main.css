@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+.main {
+  display: flex;
+  align-items: stretch;
+}
+
+aside {
+  width: 300px;
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+}
+
+article {
+  align-self: stretch;
+  flex-grow: 1;
+  display: flex;
+}
