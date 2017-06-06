@@ -5,7 +5,35 @@ export class Member extends React.Component<RouteComponentProps<{}>, {}> {
   render() {
     return (
       <div>
-        Member
+        <div className='article-header'></div>
+        <div className='article-body'>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1><h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+          <h1>Member</h1>
+
+        </div>
+        <div className='article-footer'>
+          <input type="text" />
+        </div>
       </div>
     )
   }

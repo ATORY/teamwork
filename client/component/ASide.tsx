@@ -1,28 +1,48 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Member } from '../reducers/members';
+import { Work } from '../reducers/works';
 
-interface ASideProps {
+interface ASideProps { }
 
+interface ASideState { }
+
+interface ConnectedProps {
+  members: Member[];
+  works: Work[];
 }
 
-interface ASideState {
-
-}
-
-export class ASide extends React.Component<ASideProps, ASideState> {
+export class ASideComponent extends React.Component<ASideProps & ConnectedProps, ASideState> {
   render(): JSX.Element {
+    const { members, works } = this.props;
     return (
       <aside>
+        <div>
+          <Link to='/'>Avator</Link>
+        </div>
+        <div>work</div>
         <ul>
-          <li><Link to='/'>Avator</Link></li>
+          {works.map((item: Work) => {
+            return <li key={`${item._id}`}><Link to={`/work/${item._id}`}>{item.name}</Link></li>
+          })}
         </ul>
+        <div>member</div>
         <ul>
-          <li><Link to='/work/301'>work/301</Link></li>
-        </ul>
-        <ul>
-          <li><Link to='/member/fdasfa'>members/fsad</Link></li>
+          {members.map((item: Member) => {
+            return <li key={`${item._id}`}><Link to={`/member/${item._id}`}>{item.name}</Link></li>
+          })}
         </ul>
       </aside>
     );
   }
 }
+
+const mapStateToProps = (state: any) => ({
+  works: state.works,
+  members: state.members,
+});
+
+export const ASide = connect<ConnectedProps, void, ASideProps>(
+  mapStateToProps,
+)(ASideComponent);
