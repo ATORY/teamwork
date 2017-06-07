@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import { loginReducer } from './login';
 import { membersReducer } from './members';
-import { worksReducer } from './works';
+import { worksEpic, worksReducer } from './works';
 
 export const rootReducer = combineReducers({
   router: routerReducer,
@@ -12,3 +12,7 @@ export const rootReducer = combineReducers({
   works: worksReducer,
   // users
 });
+
+export const rootEpic = combineEpics(
+  worksEpic,
+);

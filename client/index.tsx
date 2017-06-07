@@ -12,19 +12,20 @@ import {
   BrowserRouter as Router, Switch, Route, Link, RouteComponentProps
 } from 'react-router-dom';
 
-import { rootReducer } from './reducers';
+import { rootReducer, rootEpic } from './reducers';
 import { ASide } from './component/ASide';
 import { Article } from './component/Article';
 import { Main } from './Main';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
-
+const epicMiddleware = createEpicMiddleware(rootEpic);
 const store = createStore(
   rootReducer,
   // applyMiddleware(epicMiddleware, createLogger())
-  applyMiddleware(middleware, createLogger())
+  applyMiddleware(middleware, epicMiddleware, createLogger())
 );
+
 
 ReactDOM.render(
   <Provider store={store}>

@@ -12,11 +12,11 @@ export class Works extends React.Component<RouteComponentProps<{}>, {}> {
         <div className='article-body works'>
           {
             [1, 2, 3, 4, 5].map((item: number) => {
-              return <WorkTask key={`work-task-${item}`} />
+              return <WorkTask key={`work-task-${item}`} />;
             })
           }
         </div>
       </div>
-    )
+    );
   }
 }

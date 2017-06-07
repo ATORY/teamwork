@@ -3,7 +3,7 @@ export interface Member {
   name: string;
 }
 
-type MemberType = 'init' | 'add' | 'del'
+type MemberType = 'init' | 'add' | 'del';
 
 interface Action {
   type: MemberType;
